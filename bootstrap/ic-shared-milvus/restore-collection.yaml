@@ -19,12 +19,12 @@ spec:
         args:
         - -ec
         - |-
-          echo -n "Waiting for milvus-backup pod in ic-shared-milvus namespace"
-          while ! nc -z milvus-backup.ic-shared-milvus.svc.cluster.local 8080; do
+          echo -n "Waiting for milvus-backup pod in milvus namespace"
+          while ! nc -z milvus-backup.milvus.svc.cluster.local 8080; do
             echo -n '.'
             sleep 1
           done
-          echo "Milvus-backup pod is running in ic-shared-milvus namespace"
+          echo "Milvus-backup pod is running in milvus namespace"
       containers:
       - name: add-model
         image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:1.2
@@ -69,7 +69,7 @@ spec:
           upload_to_s3('milvus-backup-bucket', 'backup')
 
           # Restore the collection from the backup
-          url = 'http://milvus-backup.ic-shared-milvus.svc.cluster.local:8080/api/v1/restore'
+          url = 'http://milvus-backup.milvus.svc.cluster.local:8080/api/v1/restore'
           headers = {'Content-Type': 'application/json'}
           data = {
             "async": True,
@@ -82,7 +82,7 @@ spec:
           response = requests.post(url, headers=headers, json=data)
 
           client = MilvusClient(
-              uri="http://vectordb-milvus.ic-shared-milvus.svc.cluster.local:19530",
+              uri="http://vectordb-milvus.milvus.svc.cluster.local:19530",
               token="root:Milvus",
               db_name="default"
           )
