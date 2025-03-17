@@ -20,7 +20,7 @@ data:
       simpleResponse: true
 
     milvus:
-      address: vectordb-milvus.ic-shared-milvus.svc.cluster.local
+      address: vectordb-milvus.milvus.svc.cluster.local
       port: 19530
       authorizationEnabled: true
       tlsMode: 0
@@ -29,7 +29,7 @@ data:
 
     minio:
       storageType: "minio"
-      address: minio.ic-shared-minio.svc.cluster.local
+      address: minio-service.minio.svc.cluster.local
       port: 9000
       accessKeyID: minio
       secretAccessKey: minio123
@@ -54,5 +54,5 @@ data:
       gcPause:
         enable: true
         seconds: 7200
-        address: http://vectordb-milvus.ic-shared-milvus.svc.cluster.local:9091
+        address: http://vectordb-milvus.milvus.svc.cluster.local:9091
       
