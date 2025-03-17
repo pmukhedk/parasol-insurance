@@ -4,8 +4,7 @@ kind: ConfigMap
 metadata:
   name: vectordb-milvus
   labels:
-    app: ic-shared-milvus
-    argocd.argoproj.io/managed-by: openshift-gitops
+    app: ic-shared-milvu
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 data:
@@ -29,7 +28,7 @@ data:
       type: etcd
 
     minio:
-      address: minio.ic-shared-minio.svc.cluster.local
+      address: minio-service.minio.svc.cluster.local
       port: 9000
       accessKeyID: minio
       secretAccessKey: minio123
