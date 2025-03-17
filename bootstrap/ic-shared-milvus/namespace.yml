@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ic-shared-milvus
+  name: milvus
   labels:
-    app: ic-shared-milvus
+    app: milvus
     argocd.argoproj.io/managed-by: openshift-gitops
   annotations:
     openshift.io/display-name: "Milvus"
