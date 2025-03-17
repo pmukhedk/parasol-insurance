@@ -40,7 +40,7 @@ spec:
           - -ec
           - |-
             echo -n "Waiting for minio pod in ic-shared-minio namespace"
-            while ! nc -z minio.ic-shared-minio.svc.cluster.local 9000; do
+            while ! nc -z minio-service.minio.svc.cluster.local 9000; do
               echo -n '.'
               sleep 1
             done
