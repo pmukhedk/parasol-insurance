@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   labels:
-    app: ic-shared-milvus
+    app: milvus
     argocd.argoproj.io/managed-by: openshift-gitops
     component: milvus-backup
 spec:
@@ -42,12 +42,12 @@ spec:
         args:
         - -ec
         - |-
-          echo -n "Waiting for milvus pod in ic-shared-milvus namespace"
-          while ! nc -z vectordb-milvus.ic-shared-milvus.svc.cluster.local 19530; do
+          echo -n "Waiting for milvus pod in milvus namespace"
+          while ! nc -z vectordb-milvus.milvus.svc.cluster.local 19530; do
             echo -n '.'
             sleep 1
           done
-          echo "Milvus pod is running in ic-shared-milvus namespace"
+          echo "Milvus pod is running in milvus namespace"
       containers:
       - name: milvus-backup
         image: quay.io/rh-aiservices-bu/milvus-backup:v0.4.12
